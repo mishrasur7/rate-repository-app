@@ -7,6 +7,8 @@ import theme from '../theme';
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
+    paddingBottom: Constants.statusBarHeight,
+    paddingLeft: Constants.statusBarHeight,
     backgroundColor: theme.colors.appBarBackgroundColor,
   },
 });
