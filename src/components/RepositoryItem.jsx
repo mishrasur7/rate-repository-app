@@ -1,34 +1,89 @@
-import { Text, View, StyleSheet, Image } from "react-native"
-import { StatusBar } from 'expo-status-bar';
+import { Text, View, StyleSheet, Image, Button, Pressable } from "react-native"
 
 export const RepositoryItem = ({ item }) => {
+
+  const formatValues = (value) => {
+    return value >= 1000
+    ? `${Number.parseFloat(value/1000).toFixed(1)}K`
+    : value
+  }
+
   return (
     <View style={styles.container}>
-      <Image 
-        source={{uri: item.ownerAvatarUrl}}
-        style={styles.logo}
-      />
-      <Text style={styles.item}>Full Name: {item.fullName}</Text>
-      <Text style={styles.item}>Description: {item.description}</Text>
-      <Text style={styles.item}>Language: {item.language}</Text>
-      <Text style={styles.item}>Stars: {item.stargazersCount}</Text>
-      <Text style={styles.item}>Forks: {item.forksCount}</Text>
-      <Text style={styles.item}>Reviews: {item.reviewCount}</Text>
-      <Text style={styles.item}>Ratings: {item.ratingAverage}</Text>
+        <View style={styles.section1}>
+          <Image 
+            source={{uri: item.ownerAvatarUrl}}
+            style={styles.image}
+          />
+          <View style={styles.details}>
+            <Text style={styles.fullname}>{item.fullName}</Text>
+            <Text style={styles.description}>{item.description}</Text>
+            <Pressable style={styles.button}>
+              <Text style={styles.buttonText}>{item.language}</Text>
+            </Pressable>
+          </View>
+        </View>
+        <View style={styles.moreDetails}>
+          <View>
+            <Text style={styles.data}>{formatValues(item.stargazersCount)}</Text>
+            <Text>Stars</Text>
+          </View>
+          <View>
+            <Text style={styles.data}>{formatValues(item.forksCount)}</Text>
+            <Text>Forks</Text>
+          </View>
+          <View>
+            <Text style={styles.data}>{formatValues(item.reviewCount)}</Text>
+            <Text>Reviews</Text>
+          </View>
+          <View>
+            <Text style={styles.data}>{formatValues(item.ratingAverage)}</Text>
+            <Text>Ratings</Text>
+          </View>
+        </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        marginTop: StatusBar.currentHeight || 0,
+        padding: 10,
     },
-    item: {
-        fontSize: 20
+    image: {
+      width: 100,
+      height: 100,
     },
-    logo: {
-      width: 75,
-      height: 75,
+    section1: {
+      flexDirection: 'row',
     },
+    details: {
+      paddingLeft: 30,
+    },
+    fullname: {
+      fontSize: 20,
+    },
+    description: {
+      fontSize: 20,
+    },
+    button: {
+      marginTop: 8,
+      padding: 10,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      borderRadius: 8,
+      backgroundColor: '#1e90ff',
+      width: 90,
+    },
+    buttonText: {
+      color: 'white'
+    },
+    moreDetails: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      
+    },
+    data: {
+      fontWeight: 'bold',
+      paddingBottom: 10
+    }
 })
