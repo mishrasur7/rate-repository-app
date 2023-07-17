@@ -5,6 +5,7 @@ import { Link } from "react-router-native"
 const styles = StyleSheet.create({
   bar: {
     flexDirection: 'row',
+    height: 75
   },
   tab: {
     padding: 10
