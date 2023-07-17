@@ -4,7 +4,7 @@ const theme = {
         tabTextColor: 'white'
     },
     fontSizes: {
-        tab: 30
+        tab: 25
     },
     fontWeights: {
         tab: 'bold'

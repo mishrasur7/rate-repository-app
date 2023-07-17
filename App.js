@@ -1,11 +1,14 @@
 import { View } from 'react-native';
 
 import Main from './src/components/Main';
+import { NativeRouter } from 'react-router-native';
 
 export default function App() {
   return (
     <View>
-      <Main />
+      <NativeRouter>
+        <Main />
+      </NativeRouter>
     </View>
   );
 }
