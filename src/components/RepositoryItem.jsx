@@ -1,4 +1,48 @@
 import { Text, View, StyleSheet, Image, Button, Pressable } from "react-native"
+import theme from "../theme"
+
+const styles = StyleSheet.create({
+  container: {
+      padding: 10,
+  },
+  image: {
+    width: 100,
+    height: 100,
+  },
+  section1: {
+    flexDirection: 'row',
+  },
+  details: {
+    paddingLeft: 30,
+  },
+  fullname: {
+    fontSize: 20,
+  },
+  description: {
+    fontSize: 20,
+  },
+  button: {
+    marginTop: 8,
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    borderRadius: 8,
+    backgroundColor: theme.colors.button,
+    width: 90,
+  },
+  buttonText: {
+    color: 'white'
+  },
+  moreDetails: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    
+  },
+  data: {
+    fontWeight: 'bold',
+    paddingBottom: 10
+  }
+})
 
 export const RepositoryItem = ({ item }) => {
 
@@ -44,46 +88,3 @@ export const RepositoryItem = ({ item }) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 10,
-    },
-    image: {
-      width: 100,
-      height: 100,
-    },
-    section1: {
-      flexDirection: 'row',
-    },
-    details: {
-      paddingLeft: 30,
-    },
-    fullname: {
-      fontSize: 20,
-    },
-    description: {
-      fontSize: 20,
-    },
-    button: {
-      marginTop: 8,
-      padding: 10,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      borderRadius: 8,
-      backgroundColor: '#1e90ff',
-      width: 90,
-    },
-    buttonText: {
-      color: 'white'
-    },
-    moreDetails: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      
-    },
-    data: {
-      fontWeight: 'bold',
-      paddingBottom: 10
-    }
-})

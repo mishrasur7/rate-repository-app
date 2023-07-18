@@ -1,7 +1,8 @@
 const theme = {
     colors: {
         appBarBackgroundColor: "#24292e",
-        tabTextColor: 'white'
+        tabTextColor: 'white',
+        button: '#1e90ff'
     },
     fontSizes: {
         tab: 25
