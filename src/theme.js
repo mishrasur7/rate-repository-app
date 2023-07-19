@@ -1,4 +1,4 @@
-import { Platform, Switch } from "react-native"
+import { Platform, } from "react-native"
 
 const theme = {
     colors: {
