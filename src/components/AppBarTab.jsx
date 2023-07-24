@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     height: 75
   },
   tab: {
-    padding: 10
+    padding: theme.padding.tab
   },
   tabText: {
     fontSize: theme.fontSizes.tab,

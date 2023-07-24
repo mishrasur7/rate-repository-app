@@ -19,6 +19,9 @@ const theme = {
             android: "Roboto",
             default: "System"
         })
+    },
+    padding: {
+        tab: 10
     }
 }
 
