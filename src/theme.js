@@ -21,7 +21,8 @@ const theme = {
         })
     },
     padding: {
-        tab: 10
+        tab: 10,
+        container: 10
     }
 }
 

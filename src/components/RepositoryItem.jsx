@@ -3,7 +3,7 @@ import theme from "../theme"
 
 const styles = StyleSheet.create({
   container: {
-      padding: 10,
+      padding: theme.padding.container,
   },
   image: {
     width: 100,
