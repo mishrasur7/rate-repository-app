@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
       padding: theme.padding.container,
   },
   image: {
-    width: 100,
-    height: 100,
+    width: theme.widths.repositoryItem,
+    height: theme.heights.repositoryItem,
   },
   section1: {
     flexDirection: 'row',

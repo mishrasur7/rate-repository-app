@@ -23,6 +23,12 @@ const theme = {
     padding: {
         tab: 10,
         container: 10
+    },
+    widths: {
+        repositoryItem: 100
+    },
+    heights: {
+        repositoryItem: 100
     }
 }
 
