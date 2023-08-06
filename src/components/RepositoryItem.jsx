@@ -52,6 +52,10 @@ export const RepositoryItem = ({ item }) => {
     : value
   }
 
+  if(!item) {
+    return null
+  }
+
   return (
     <View style={styles.container} testID="repositoryItem">
         <View style={styles.section1}>

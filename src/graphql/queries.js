@@ -1,27 +1,29 @@
 import { gql } from '@apollo/client';
 
+import { REPOSITORY_BASE_DETAILS } from './fragments';
+
+export const GET_SINGLE_REPOSITORY = gql`
+  ${REPOSITORY_BASE_DETAILS}
+  query Repository ($repositoryId: ID!) {
+    repository (id: $repositoryId) {
+      ...RepositoryBaseDetails
+      url
+    }
+  }
+`
+
 export const GET_REPOSITORIES = gql`
-query {
-  repositories {
-    edges {
-      node {
-        id,
-        name,
-        ownerName,
-        createdAt,
-        fullName,
-        reviewCount,
-        ratingAverage,
-        forksCount,
-        stargazersCount,
-        description,
-        language,
-        ownerAvatarUrl
+  ${REPOSITORY_BASE_DETAILS}
+  query Repositories {
+    repositories {
+      edges {
+        node {
+          ...RepositoryBaseDetails
+        }
       }
     }
   }
-} 
-`
+`;
 
 export const GET_USER = gql`
   query Me {
