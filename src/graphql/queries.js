@@ -8,6 +8,20 @@ export const GET_SINGLE_REPOSITORY = gql`
     repository (id: $repositoryId) {
       ...RepositoryBaseDetails
       url
+      reviews {
+        edges {
+          node {
+            id
+            text
+            rating
+            createdAt
+            user {
+              id
+              username
+            }
+          }
+        }
+      }
     }
   }
 `

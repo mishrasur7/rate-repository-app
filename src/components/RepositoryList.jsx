@@ -17,7 +17,7 @@ const PressableRepo = ( {item, navigate}) => {
   const handlePress = () => {
     navigate(`/${item.id}`)
   }
-  
+
   return (
     <Pressable onPress={handlePress}>
       <RepositoryItem item={item}/>
