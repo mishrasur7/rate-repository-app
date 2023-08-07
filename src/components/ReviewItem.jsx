@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet } from "react-native"
+import { format } from 'date-fns'; 
 
 import theme from '../theme'
 
@@ -42,6 +43,8 @@ const ReviewItem = ({ review }) => {
     if(!review) {
       return null
     }
+
+    const date = format(new Date(review.node.createdAt), 'dd-MM-yyyy')
   
     return (
       <View style={styles.container}>
@@ -51,7 +54,7 @@ const ReviewItem = ({ review }) => {
         <View style={styles.detailSection}>
             <View>
                 <Text style={styles.fullName}>{review.node.user.username}</Text>
-                <Text style={styles.date}>{review.node.createdAt}</Text>
+                <Text style={styles.date}>{date}</Text>
             </View>
             <View>
                 <Text>{review.node.text}</Text>
