@@ -41,6 +41,11 @@ const AppBarTab = () => {
       <Link to='/' style={styles.tab}>
         <Text style={styles.tabText}>Repositories</Text>
       </Link>
+      {data?.me && 
+        <Link to='/create-review' style={styles.tab}>
+          <Text style={styles.tabText}>Create Review</Text>
+        </Link>
+      }
       {data?.me ? 
         <Link to='/sign-in' style={styles.tab} onPress={handleSignOut}>
           <Text style={styles.tabText}>Sign Out</Text>
