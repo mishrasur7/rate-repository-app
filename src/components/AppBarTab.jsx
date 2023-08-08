@@ -46,13 +46,19 @@ const AppBarTab = () => {
           <Text style={styles.tabText}>Create Review</Text>
         </Link>
       }
-      {data?.me ? 
+      {data?.me ?
         <Link to='/sign-in' style={styles.tab} onPress={handleSignOut}>
-          <Text style={styles.tabText}>Sign Out</Text>
-        </Link> :
-        <Link to='/sign-in' style={styles.tab}>
-          <Text style={styles.tabText}>Sign In</Text>
+              <Text style={styles.tabText}>Sign Out</Text>
         </Link>
+         :
+         <>
+            <Link to='/sign-in' style={styles.tab}>
+            <Text style={styles.tabText}>Sign In</Text>
+            </Link>
+            <Link to='/sign-up' style={styles.tab}>
+              <Text style={styles.tabText}>Sign up</Text>
+            </Link>  
+         </>
       }
     </View>
     
