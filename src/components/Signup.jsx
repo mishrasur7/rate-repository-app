@@ -34,8 +34,8 @@ const Signup = () => {
     const [signUp, result] = useSignup(); 
 
     const onSubmit =  async (values) => {
+        
         const {username, password} = values; 
-        console.log(username, password)
 
         try {
             await signUp({
