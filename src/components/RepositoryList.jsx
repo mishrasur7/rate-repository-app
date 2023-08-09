@@ -5,6 +5,7 @@ import { RepositoryItem } from './RepositoryItem';
 import useRepositories from '../hooks/useRepositories';
 import OrderingSelection from './SelectOrder'
 import { useState } from 'react';
+import SearchBar from './SearchBar';
 
 const styles = StyleSheet.create({
   separator: {
@@ -27,12 +28,14 @@ const PressableRepo = ( {item, navigate}) => {
   )
 }
 
-export const RepositoryListContainer = ({ repositories, navigate, onPress }) => {
+export const RepositoryListContainer = ({ repositories, navigate, onPress, searchKeyword, onChangeSearch }) => {
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
     : [];
 
   return (
+    <>
+    <SearchBar searchKeyword={searchKeyword} onChangeSearch={onChangeSearch}/>
     <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
@@ -40,6 +43,7 @@ export const RepositoryListContainer = ({ repositories, navigate, onPress }) => 
       keyExtractor={item => item.id}
       ListHeaderComponent={<OrderingSelection onPress={onPress}/>}
     />
+    </>
   );
 }
 
@@ -48,16 +52,23 @@ const RepositoryList = () => {
     orderDirection: 'DESC',
     orderBy: 'CREATED_AT'
   })
+  const[searchKeyword, setSearchKeyword] = useState(''); 
+  const onChangeSearch = query => setSearchKeyword(query); 
+
   const {orderDirection, orderBy} = ordering; 
 
-  const onPress = (ordering) => setVariables(ordering); 
+  const onPress = (ordering) => setOrdering(ordering); 
 
-  const { repositories} = useRepositories(orderDirection, orderBy);
+  const { repositories} = useRepositories(orderDirection, orderBy, searchKeyword);
 
   const navigate = useNavigate(); 
 
   return (
-    <RepositoryListContainer repositories={repositories} navigate={navigate} onPress={onPress}/>
+    <RepositoryListContainer 
+    repositories={repositories} 
+    navigate={navigate} onPress={onPress}
+    searchKeyword={searchKeyword}
+    onChangeSearch={onChangeSearch}/>
   )
 };
 
