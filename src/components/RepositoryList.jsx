@@ -3,6 +3,8 @@ import {useNavigate, } from 'react-router-native';
 
 import { RepositoryItem } from './RepositoryItem';
 import useRepositories from '../hooks/useRepositories';
+import OrderingSelection from './SelectOrder'
+import { useState } from 'react';
 
 const styles = StyleSheet.create({
   separator: {
@@ -25,7 +27,7 @@ const PressableRepo = ( {item, navigate}) => {
   )
 }
 
-export const RepositoryListContainer = ({ repositories, navigate }) => {
+export const RepositoryListContainer = ({ repositories, navigate, onPress }) => {
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
     : [];
@@ -36,16 +38,26 @@ export const RepositoryListContainer = ({ repositories, navigate }) => {
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({item}) => <PressableRepo item={item} navigate={navigate}/>}
       keyExtractor={item => item.id}
+      ListHeaderComponent={<OrderingSelection onPress={onPress}/>}
     />
   );
 }
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
-  const navigate = useNavigate();
+  const[ordering, setOrdering] = useState({
+    orderDirection: 'DESC',
+    orderBy: 'CREATED_AT'
+  })
+  const {orderDirection, orderBy} = ordering; 
+
+  const onPress = (ordering) => setVariables(ordering); 
+
+  const { repositories} = useRepositories(orderDirection, orderBy);
+
+  const navigate = useNavigate(); 
 
   return (
-    <RepositoryListContainer repositories={repositories} navigate={navigate}/>
+    <RepositoryListContainer repositories={repositories} navigate={navigate} onPress={onPress}/>
   )
 };
 
