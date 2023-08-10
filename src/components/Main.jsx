@@ -7,6 +7,7 @@ import SignIn from './SignIn';
 import SingleRepository from './SingleRepository';
 import CreateReview from './CreateReview';
 import Signup from './Signup';
+import MyReviews from './MyReviews';
 
 const Main = () => {
   return (
@@ -18,6 +19,7 @@ const Main = () => {
           <Route path='/sign-in' element={<SignIn />} exact/>
           <Route path='/create-review' element={<CreateReview />} exact/>
           <Route path='/sign-up' element={<Signup />} exact/>
+          <Route path='/my-reviews' element={<MyReviews />} exact/>
         </Routes>
     </View>
   );

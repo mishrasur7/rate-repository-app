@@ -45,6 +45,8 @@ const ReviewItem = ({ review }) => {
     }
 
     const date = format(new Date(review.node.createdAt), 'dd-MM-yyyy')
+
+    const user = review.node.user; 
   
     return (
       <View style={styles.container}>
@@ -53,7 +55,10 @@ const ReviewItem = ({ review }) => {
         </View>
         <View style={styles.detailSection}>
             <View>
-                <Text style={styles.fullName}>{review.node.user.username}</Text>
+                {user ? 
+                    <Text style={styles.fullName}>{review.node.user.username}</Text> :
+                    <Text style={styles.fullName}>{review.node.repository.fullName}</Text>
+                }
                 <Text style={styles.date}>{date}</Text>
             </View>
             <View>

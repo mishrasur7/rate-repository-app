@@ -29,8 +29,6 @@ const AppBarTab = () => {
     fetchPolicy: 'cache-and-network',
   });
 
-  console.log('data', data)
-
   const handleSignOut = async () => {
     await authStorage.removeAccessToken(); 
     apolloClient.resetStore(); 
@@ -41,10 +39,15 @@ const AppBarTab = () => {
       <Link to='/' style={styles.tab}>
         <Text style={styles.tabText}>Repositories</Text>
       </Link>
-      {data?.me && 
+      {data?.me &&
+      <>
         <Link to='/create-review' style={styles.tab}>
           <Text style={styles.tabText}>Create Review</Text>
         </Link>
+        <Link to='/my-reviews' style={styles.tab}>
+            <Text style={styles.tabText}>My reviews</Text>
+        </Link>
+      </>
       }
       {data?.me ?
         <Link to='/sign-in' style={styles.tab} onPress={handleSignOut}>
@@ -53,7 +56,7 @@ const AppBarTab = () => {
          :
          <>
             <Link to='/sign-in' style={styles.tab}>
-            <Text style={styles.tabText}>Sign In</Text>
+              <Text style={styles.tabText}>Sign In</Text>
             </Link>
             <Link to='/sign-up' style={styles.tab}>
               <Text style={styles.tabText}>Sign up</Text>
