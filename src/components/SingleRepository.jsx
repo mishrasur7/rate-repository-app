@@ -8,7 +8,7 @@ import ReviewItem from './ReviewItem';
 
 const SingleRepository = () => {
     const { id } = useParams(); 
-
+    
     const { repository, loading } = useRepository(id);
 
     const reviews = repository?.reviews.edges

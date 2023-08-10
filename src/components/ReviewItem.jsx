@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from "react-native"
 import { format } from 'date-fns'; 
 
 import theme from '../theme'
+import ReviewButtons from "./ReviewButtons";
 
 const styles = StyleSheet.create({
     container: {
@@ -63,6 +64,9 @@ const ReviewItem = ({ review }) => {
             </View>
             <View>
                 <Text>{review.node.text}</Text>
+            </View>
+            <View>
+                {!user && <ReviewButtons review={review}/>}
             </View>
         </View>
       </View>
